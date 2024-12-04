@@ -1,0 +1,31 @@
+class Solution {
+    public boolean canMakeSubsequence(String str1, String str2) {
+
+        if(str1.length()<str2.length()) return false;
+
+        char[] arr1=str1.toCharArray();
+        char[] arr2=new char[str1.length()];
+        StringBuilder k=new StringBuilder();
+        for(int i=0;i<arr1.length;i++){
+            if(arr1[i]=='z') arr2[i]='a';
+            else arr2[i]=(char)(arr1[i]+1);
+            k.append(arr1[i]);
+            k.append(arr2[i]);
+        }
+        char[] arr3=str2.toCharArray();
+        int n=0;
+        int j=k.indexOf(arr3[n]+"");
+        System.out.println(k);
+        int c=0;
+        while((j!=-1)){
+            c+=1;
+            if(n+1>=arr3.length) break;
+            k.deleteCharAt(j);
+            j=k.indexOf(arr3[++n]+"",j);
+            if(j==-1) break;
+        }
+         System.out.println(k);
+        return (c==str2.length()) ? true :  false;
+       
+    }
+}
