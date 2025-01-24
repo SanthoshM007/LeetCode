@@ -5,3 +5,5 @@ class Solution {
         else return false;
     }
 }
+
+// simple program
